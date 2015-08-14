@@ -95,5 +95,6 @@ Finally,in termial , run
 Install the generated debug apks, you will see :
 
 
- 
+ ![image](https://raw.githubusercontent.com/Ryfthink/Android-Gradle-Mulity-Flavor/master/art/a.png)
+ ![image](https://raw.githubusercontent.com/Ryfthink/Android-Gradle-Mulity-Flavor/master/art/b.png)
 	
