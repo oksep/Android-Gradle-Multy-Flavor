@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "cn.septenary.mulityflavors"
+        minSdkVersion 21
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    productFlavors {
+        googlePaly {
+            applicationId 'cn.septenary.mulityflavors_googlePlay'
+            buildConfigField "String","SotreName","\"Google 应用商店\""
+        }
+        appStore {
+            applicationId 'cn.septenary.mulityflavors_appStore'
+            buildConfigField "String","SotreName","\"苹果 应用商店\""
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
