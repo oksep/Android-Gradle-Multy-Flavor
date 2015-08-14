@@ -4,7 +4,7 @@ Using Gradle to build an Android Project with mulity flavors
 
 ***
 
-BuildConfig
+Mulity BuildConfigs
 ---
 Add below code in build.gradle
 	
@@ -22,7 +22,7 @@ Add below code in build.gradle
 It will generate two **BuildConfig**, call `BuildConfig.SotreName` in Java to access the filed.
 
 
-Resource
+Mulity Resources
 ---
 
 **Flavor googlePaly :**
@@ -52,7 +52,7 @@ Resource
 After that,try `getResources().getString(R.string.hello_flavor)` to see the effect.
 
 
-Code
+Mulity Codes
 ---
 
 **Flavor googlePaly :**
