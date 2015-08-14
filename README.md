@@ -71,7 +71,7 @@ Mulity Codes
 
 **Flavor appStore :**
 
-1. Manually create Java file  `googlePaly/java/cn/septenary/mulityflavors/Flavor.java` in **src**
+1. Manually create Java file  `appStore/java/cn/septenary/mulityflavors/Flavor.java` in **src**
 2. Custom code:
 
 		package cn.septenary.mulityflavors;
