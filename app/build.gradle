@@ -1,25 +1,43 @@
 apply plugin: 'com.android.application'
 
+def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy-MM-dd')
+    return formattedDate
+}
+
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "cn.septenary.mulityflavors"
-        minSdkVersion 21
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        // Placeholder
+        manifestPlaceholders = [CHANNEL_VALUE: 'channel_testing']
+    }
+
+    // productFlavors.all must before appStore,therefore API_URL can take effect.
+    productFlavors.all { flavor ->
+        // replace all buildConfigField -> API_URL
+        flavor.buildConfigField 'String', 'API_URL', '"http://www.google.com"'
+        // replace all placeholders
+        flavor.manifestPlaceholders.put("CHANNEL_VALUE", name)
     }
 
     productFlavors {
         googlePaly {
             applicationId 'cn.septenary.mulityflavors_googlePlay'
-            buildConfigField "String","SotreName","\"Google 应用商店\""
+            buildConfigField "String", "SotreName", "\"Google 应用商店\""
         }
         appStore {
             applicationId 'cn.septenary.mulityflavors_appStore'
-            buildConfigField "String","SotreName","\"苹果 应用商店\""
+            buildConfigField "String", "SotreName", "\"苹果 应用商店\""
+            buildConfigField 'String', 'API_URL', '"http://www.septenary.cn"'
+            manifestPlaceholders.put("CHANNEL_VALUE", 'channel_appstore')
         }
     }
 
@@ -27,6 +45,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            // specify the output *.apk , just modify applicationVariants
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    if (output.outputFile != null && output.outputFile.name.endsWith('.apk') && 'debug'.equals(variant.buildType.name)) {
+                        def apkFile = new File(output.outputFile.getParent(), "Mulityflavors_${variant.flavorName}_v${variant.versionName}_${buildTime()}.apk")
+                        output.outputFile = apkFile
+                    }
+                }
+            }
         }
     }
 }

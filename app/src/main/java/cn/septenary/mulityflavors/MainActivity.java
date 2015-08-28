@@ -1,7 +1,10 @@
 package cn.septenary.mulityflavors;
 
 import android.app.Activity;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -20,5 +23,17 @@ public class MainActivity extends Activity {
 
         tv.append(getResources().getString(R.string.hello_flavor));
         tv.append("\n");
+
+        tv.append(BuildConfig.API_URL);
+        tv.append("\n");
+
+        try {
+            ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            String channel = appInfo.metaData.getString("CHANNEL");
+            tv.append(channel);
+            tv.append("\n");
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
