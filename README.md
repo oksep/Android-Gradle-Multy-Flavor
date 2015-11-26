@@ -60,7 +60,7 @@ Android-Gradle-Multy-Flavors
 ---
 如果一个应用，在不同的渠道需要不同的启动图或者文字提示，flavor 同样可以帮我们完成。
 
-1.首先，Android Studio 的工程目录默认地将源代码和资源都放在了 **src/main** 文件夹下，在 **main** 的统计目录，也就是  **src** 文件夹下创建全路径文件 **src/googlePlay/res/values/strings.xml**，（注意：路径中的 "googlePlay" 必须与 flavor 名称一一对应），这个文件代码如下：
+1.首先，Android Studio 的工程目录默认地将源代码和资源都放在了 **src/main** 文件夹下，在 **main** 的同级目录，也就是  **src** 文件夹下创建全路径文件 **src/googlePlay/res/values/strings.xml**，（注意：路径中的 "googlePlay" 必须与 flavor 名称一一对应），这个文件代码如下：
         
     <resources>
         <string name="app_name">Flavor: Google Play</string>
