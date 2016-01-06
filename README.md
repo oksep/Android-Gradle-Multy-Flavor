@@ -1,5 +1,6 @@
 Android-Gradle-Multy-Flavors
 ===
+Blog Link：https://github.com/Ryfthink/Android-Gradle-Multy-Flavor 
 试想一下我们用 **Gradle** 构建多个渠道包，而且这些渠道包都是有差异的，可能是包名不同，可能是代码不同，也可能是资源不同，**flavors**  这个概念由此产生，用  **flavors** 来配置构建脚本 **build.gradle** ，可以构建 Android 工程的多个变种
 
 ---
